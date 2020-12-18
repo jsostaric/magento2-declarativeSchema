@@ -1,0 +1,9 @@
+<?php
+
+/**
+ * @var \Inchoo\DeclarativeSchema\Block\ListBlock $block
+ */
+?>
+<?php foreach ($block->getList() as $post): ?>
+    <p><?= $post->getId() ?>. <?= $post->getTitle() . ' - ' . $post->getCreatedAt() ?></p>
+<?php endforeach ?>

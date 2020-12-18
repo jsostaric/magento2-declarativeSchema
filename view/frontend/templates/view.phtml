@@ -1,0 +1,16 @@
+<?php
+/**
+ * @var \Inchoo\DeclarativeSchema\Block\View $block
+ */
+
+?>
+
+<?php foreach ($block->showPost($block->getRequest()->getParam('id')) as $post): ?>
+    <h1><?= $post->getTitle() ?></h1>
+    <p><small><?= $post->getCreatedAt() ?></small></p>
+    <p>Content: <?= $post->getContent() ?></p>
+<?php endforeach ?>
+
+
+
+
