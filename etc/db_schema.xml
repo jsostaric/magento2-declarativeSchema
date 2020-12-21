@@ -5,8 +5,8 @@
         <column xsi:type="int" name="post_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Post ID" />
         <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Title" />
         <column xsi:type="varchar" name="content" nullable="false" length="255" comment="Post Content" />
-        <column xsi:type="datetime" name="created_at" nullable="true" comment="Created At" />
-        <column xsi:type="datetime" name="updated_at" nullable="true" comment="Updated At" />
+        <column xsi:type="datetime" name="created_at" nullable="true" default="CURRENT_TIMESTAMP" comment="Created At" />
+        <column xsi:type="datetime" name="updated_at" nullable="true" default="CURRENT_TIMESTAMP" on_update="true" comment="Updated At" />
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="post_id" />
         </constraint>
@@ -15,7 +15,7 @@
         <column xsi:type="int" name="comment_id" unsigned="true" nullable="false" padding="5" identity="false" comment="Comment ID" />
         <column xsi:type="int" name="post_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Foreign key to post table" />
         <column xsi:type="varchar" name="content" length="255" nullable="false" comment="Comment Content" />
-        <column xsi:type="datetime" name="created_at" nullable="true" comment="Created At" />
+        <column xsi:type="datetime" name="created_at" nullable="true" default="CURRENT_TIMESTAMP" comment="Created At" />
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="comment_id" />
         </constraint>

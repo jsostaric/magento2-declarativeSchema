@@ -1,30 +1,25 @@
 <?php
 
-
 namespace Inchoo\DeclarativeSchema\Block;
 
-
-use Inchoo\DeclarativeSchema\Model\ResourceModel\Post\CollectionFactory;
+use Magento\Framework\Registry;
 use Magento\Framework\View\Element\Template;
 
 class View extends Template
 {
-    protected $postCollection;
-    public function __construct(Template\Context $context, CollectionFactory $postCollectionFactory, array $data = [])
-    {
+    protected $postRegistry;
+
+    public function __construct(
+        Template\Context $context,
+        Registry $postRegistry,
+        array $data = []
+    ) {
         parent::__construct($context, $data);
-        $this->postCollection = $postCollectionFactory;
+        $this->postRegistry = $postRegistry;
     }
 
-    /**
-     * @param $id
-     * @return \Inchoo\DeclarativeSchema\Model\ResourceModel\Post\Collection
-     */
-    public function showPost($id)
+    public function getPostId()
     {
-        $id = $this->getRequest()->getParam('id', $id);
-        $post = $this->postCollection->create()->addFieldToFilter('post_id', ['id' => $id]);
-
-        return $post;
+        return $this->postRegistry->registry('inchoo_post_id');
     }
 }
